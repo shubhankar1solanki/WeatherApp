@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "833532884258",
+    "project_id": "weatherapp-311405",
+    "storage_bucket": "weatherapp-311405.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833532884258:android:042f882479157207eae17b",
+        "android_client_info": {
+          "package_name": "com.rnweatherapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833532884258-kjcj3t1qqqbk7ckan2j2cvnh2qi7fblo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPCZYWBWvMWz_7VshZdFkapauBbvDzwko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833532884258-kjcj3t1qqqbk7ckan2j2cvnh2qi7fblo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "833532884258-ohnjotm7qh7jn1k3fjcp3dm9cdl8v9de.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.RNWeatherApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
