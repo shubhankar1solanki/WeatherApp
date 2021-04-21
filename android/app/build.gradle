@@ -187,7 +187,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     implementation platform('com.google.firebase:firebase-bom:27.0.0')

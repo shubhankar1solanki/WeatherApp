@@ -1,26 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import styles from './styles';
-import {hp, wp} from '../../Helper/ResponsiveScreen';
+import {wp} from '../../Helper/ResponsiveScreen';
 import {OpenWeatherKey} from '../../Helper/Configs';
 import Header from '../Common/Header';
+import Geolocation from '@react-native-community/geolocation';
 
 const Index = ({navigation}) => {
   let [cityData, setCityData] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      let api = `http://api.openweathermap.org/data/2.5/find?lat=23.68&lon=90.35&cnt=50&units=metric&appid=${OpenWeatherKey}`;
-
-      await fetch(api)
-        .then(res => res.json())
-        .then(res => {
-          setCityData(res.list);
-        });
-    };
-
-    getData();
+    getCurrentLocation();
   }, []);
+
+  const getData = async (initRoute) => {
+    let api = `http://api.openweathermap.org/data/2.5/find?lat=${initRoute.latitude}&lon=${initRoute.longitude}&cnt=50&units=metric&appid=${OpenWeatherKey}`;
+
+    await fetch(api)
+      .then(res => res.json())
+      .then(res => {
+        setCityData(res.list);
+      });
+  };
+
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition((info) => {
+      const initRoute = {
+        latitude: parseFloat(info.coords.latitude),
+        longitude: parseFloat(info.coords.longitude),
+      };
+      getData(initRoute);
+    });
+  };
 
   const renderCity = ({item, index}) => {
     return (

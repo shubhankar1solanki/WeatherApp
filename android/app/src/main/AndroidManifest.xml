@@ -2,6 +2,10 @@
   package="com.rnweatherapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
       android:name=".MainApplication"
@@ -28,6 +32,27 @@
 
         <!-- You will also only need to add this uses-library tag -->
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
+
+        <service
+            android:name="com.rnweatherapp.HeartbeartService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        <service
+            android:name="com.rnweatherapp.HeartbeatEventService">
+        </service>
+
+
+        <receiver
+            android:name="com.rnweatherapp.BootUpReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
 
 
     </application>

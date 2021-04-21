@@ -52,7 +52,7 @@ export default StyleSheet.create({
     fontFamily: 'Roboto',
   },
   temp: {
-    top: hp(4),
+    top: hp(2),
     fontSize: wp(8),
     fontFamily: 'Roboto',
   },

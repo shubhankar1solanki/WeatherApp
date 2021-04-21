@@ -35,6 +35,10 @@
 			</dict>
 		</dict>
 	</dict>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string></string>
+  <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+  <string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>

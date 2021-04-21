@@ -101,7 +101,7 @@ const Index = props => {
           <Image
             resizeMode="contain"
             source={CLOUD}
-            style={{width: wp(30), height: wp(30)}}
+            style={{width: wp(20), height: wp(20)}}
           />
         </View>
       </View>

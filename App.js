@@ -11,6 +11,9 @@ import {Alert} from 'react-native';
 import {SafeAreaView} from 'react-native';
 import RootNavigation from './App/Navigators/RootNavigation';
 import messaging from '@react-native-firebase/messaging';
+import Heartbeat from './App/Screens/Common/Heartbeat';
+import Geolocation from '@react-native-community/geolocation';
+import {OpenWeatherKey} from './App/Helper/Configs';
 
 const App: () => React$Node = () => {
   const checkPermission = async () => {
@@ -51,8 +54,30 @@ const App: () => React$Node = () => {
       );
     });
 
+    getCurrentLocation();
+
     return unsubscribe;
   }, []);
+
+  const getCurrentLocation = () => {
+    Geolocation.getCurrentPosition(async info => {
+      const initRoute = {
+        latitude: parseFloat(info.coords.latitude),
+        longitude: parseFloat(info.coords.longitude),
+      };
+
+      let api = `http://api.openweathermap.org/data/2.5/weather?lat=${initRoute.latitude}&lon=${initRoute.longitude}&units=metric&appid=${OpenWeatherKey}`;
+      let url =
+        'https://images.vexels.com/media/users/3/154332/isolated/preview/079ffb98258a5cd58bc5f57438ce701d-cloud-weather-stroke-icon-by-vexels.png';
+
+      await fetch(api)
+        .then(res => res.json())
+        .then(res => {
+          let body = `Current temperature: ${res.main.temp}° c`;
+          Heartbeat.startService(url, body);
+        });
+    });
+  };
 
   return (
     <SafeAreaView style={{flex: 1}}>
